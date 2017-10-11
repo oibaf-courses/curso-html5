@@ -2,6 +2,10 @@ body {
     /* background-color: red; */
 }
 
+nav ul li {
+    display: inline-block;
+}
+
 table {
     border-collapse: collapse;
 }
