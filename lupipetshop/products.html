@@ -7,8 +7,55 @@
     <title>Document</title>
     <link href="resources/estilo.css" rel="stylesheet">
     <script src="resources/script.js"></script>
+    <script>
+        function makeToscoText(words) {
+            toscoText = []
+            if (!isNaN(words) && words>0) {
+                var count = 0;
+                for (count=0; count<words; count++) {
+                    toscoText.push(Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5))
+                }
+            }
+            return toscoText.join(' ')
+        }
+
+        function preencheProdutos(tabela, quantidade) {
+            if (!isNaN(quantidade) && quantidade > 0) {
+                var count = 0;
+                for (count=1; count<quantidade && count < 10; count++) {
+                    produto = { nome: makeToscoText(1),
+                        valor: Math.random(),
+                        descricao: makeToscoText(7),
+                        imagem: 'images/products/productImage0'+count+'.jpg'
+                    }
+                    nome = document.createElement('td')
+                    nome.innerHTML = produto.nome
+                    valor = document.createElement('td')
+                    valor.innerHTML = produto.valor
+                    descricao = document.createElement('td')
+                    descricao.innerHTML = produto.descricao
+                    imagem = document.createElement('td')
+                    img = document.createElement('img')
+                    img.alt = produto.nome
+                    img.src = produto.imagem
+                    imagem.appendChild(img)
+                    linha = document.createElement('tr')
+                    linha.appendChild(nome)
+                    linha.appendChild(valor)
+                    linha.appendChild(descricao)
+                    linha.appendChild(imagem)
+                    tabela.appendChild(linha)
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-    
+<body onload="preencheProdutos(document.getElementById('produtos'),10);">
+    <table id="produtos">
+        <tr>
+            <caption align="bottom">Tabela 1.1 - Produtos</caption>
+            <th>Nome</th><th>Valor</th><th>Descrição</th><th>Imagem</th>
+        </tr>
+    </table>
 </body>
 </html>
