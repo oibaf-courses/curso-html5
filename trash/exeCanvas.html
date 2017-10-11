@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function pincel(canvas) {
+            context = canvas.getContext("2d");
+            context.fillStyle = "#FF0000";
+            context.fillRect(0,0,80,100);
+
+            var gl = canvas.getContext('webgl') || canvas.getContext("experimental-webgl");
+            if (gl) {
+                gl.clearColor(0,0,0.8,1);
+                gl.clear(gl.COLOR_BUFFER_BIT);
+            }
+        }
+    </script>
+</head>
+<body onload="pincel(document.getElementById('daVinci'));">
+    <canvas id='daVinci'>Ooops.</canvas>
+</body>
+</html>
