@@ -44,11 +44,16 @@
             grid-template-columns: 50px 50px 50px;
             
             */
+            /*
             grid-template-columns: repeat(3, 100px);
             grid-template-rows: repeat(3, 100px);
-            grid-template-areas: 'a b c' 'd e f' 'g h i';
+            */
+            grid-template-areas: 'a b c d' 'e f g h' 'i j k l';
+            grid-template-areas: 'a b c' 'e f g' 'h i j';
             grid-column-gap: 0px;
             grid-row-gap: 0px;
+            width: 900px;
+            color: red;
         }
 
         body footer {
@@ -69,66 +74,81 @@
         */
 
         section div {
+            color: black;
             cursor: pointer;
             background-color: lightgray;
-            border: 1px solid;
+            border: 3px solid;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 4px;
+            width: 286px;
+            height: 186px;
         }
 
         /*
         section div:nth-child(4), section div:nth-child(7) {
         }
         */
+        section div:nth-child(1) {
+            color: white;
+            background-color: black;
+        }
+        section div:nth-child(2) {
+            background-color: red;
+        }
+        section div:nth-child(3) {
+            background-color: blue;
+        }
+        section div:nth-child(4) {
+            background-color: green;
+        }
+        section div:nth-child(5) {
+            background-color: yellow;
+        }
+        section div:nth-child(6) {
+            background-color: yellowgreen;
+        }
+        section div:nth-child(7) {
+            background-color: navy;
+        }
+        section div:nth-child(8) {
+            background-color: gray;
+        }
+        section div:nth-child(9) {
+            background-color: orangered;
+        }
     </style>
     <script>
-        var grid = [];
+        var grid = [
+            [null, null, null],
+            [null, null, null],
+            [null, null, null],
+        ];
         var validPlays = ['O', 'X'];
-        var colors = ['lightblue', 'lightcyan'];
+        var colors = ['lightblue', 'lightred'];
         var currentPlay = 0;
-
-        function createBoard(container) {
-            for(count=0; count<9; count++) {
-                grid.push(-1);
-                div = document.createElement('div');
-                div.velha = count;
-                div.onclick = velhaClick
-                container.appendChild(div);
-            }
-        }
-
-        function checkVelha(index) {
-            linha = Math.floor(index / 3);
-            coluna = index % 3;
-            inicioLinha = linha * 3;
-            var ganhou = false;
-            if (index in [0,2,4,6,8]) {
-                //TODO: verificar diagonais
-            }
-            if (!ganhou) {
-                //TODO: verificar linha
-            }
-            if(!ganhou) {
-                //TODO: verificar coluna
-            }
-            return ganhou;
-        }
-
-        function velhaClick() {
-            if (this.innerHTML == "") {
+        function velhaClick(item) {
+            if (item.innerHTML == "") {
                 currentPlay = (currentPlay + 1) % 2;
-                this.innerHTML = validPlays[currentPlay];
-                this.style.backgroundColor = colors[currentPlay];
-                grid[this.velha] = currentPlay;
-                alert(checkVelha(this.velha));
+                item.innerHTML = validPlays[currentPlay];
+                item.style.backgroundColor = colors[currentPlay];
             }
         }
     </script>
 </head>
 
-<body onload="createBoard(document.getElementById('container'));">
-    <section id="container">
+<body>
+    <section>
+        <div onclick="velhaClick(this);">Cavalo</div>
+        <div onclick="velhaClick(this);">Galinha</div>
+        <div onclick="velhaClick(this);"></div>
+        <div onclick="velhaClick(this);">Elefante</div>
+        <div onclick="velhaClick(this);">Lagarto</div>
+        <div onclick="velhaClick(this);">RedBull</div>
+        <div onclick="velhaClick(this);"></div>
+        <div onclick="velhaClick(this);">Papagaio</div>
+        <div onclick="velhaClick(this);">Urubu</div>
     </section>
     <footer>
         Copyleft 2017 - Ilosamart Inc.
