@@ -75,6 +75,27 @@
             display: flex;
             align-items: center;
             justify-content: center;
+
+            transition-timing-function: ease;
+            /* transform: rotate3d(0, 0, 0, 180deg); */
+            transform: scale(1);
+            transition: 1.25s;
+            z-index: 1;
+        }
+
+        section div:hover {
+            cursor: pointer;
+            background-color: lightgray;
+            border: 1px solid;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transition-timing-function: ease;
+            /* transform: rotate3d(0, 1, 0, 180deg); */
+            transform: scale(2);
+            z-index: 999;
+            transition: 1.25s;
         }
 
         /*
