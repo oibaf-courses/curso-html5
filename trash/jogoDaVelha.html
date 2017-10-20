@@ -137,6 +137,7 @@
         var validPlays = ['O', 'X'];
         var colors = ['lightblue', 'lightcyan'];
         var currentPlay = 0;
+        var terminou = false;
 
         function createBoard(container) {
             for(count=0; count<9; count++) {
@@ -185,15 +186,21 @@
         }
 
         function velhaClick() {
-            if (this.innerHTML == "") {
-                currentPlay = (currentPlay + 1) % 2;
-                this.innerHTML = validPlays[currentPlay];
-                this.style.backgroundColor = colors[currentPlay];
-                grid[this.velha] = currentPlay;
-                var ganhou = checkVelha(this.velha);
-                if(ganhou) {
-                    alert("Parabéns! O "+validPlays[grid[this.velha]]+" ganhou :)");
+            if (!terminou) {
+                if (this.innerHTML == "") {
+                    currentPlay = (currentPlay + 1) % 2;
+                    this.innerHTML = validPlays[currentPlay];
+                    this.style.backgroundColor = colors[currentPlay];
+                    grid[this.velha] = currentPlay;
+                    var ganhou = checkVelha(this.velha);
+                    if(ganhou) {
+                        alert("Parabéns! O "+validPlays[grid[this.velha]]+" ganhou :)");
+                        terminou = ganhou;
+                    }
                 }
+            }
+            else {
+                alert("O jogo terminou");
             }
         }
     </script>
