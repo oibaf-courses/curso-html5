@@ -30,8 +30,10 @@
         }
 
         body section {
+            /*
             border: 1px solid;
             border-radius: 10px;
+            */
             align-self: center;
             justify-self: center;
             grid-area: a;
@@ -72,7 +74,7 @@
         section :last-child {
             background-color: yellow;
         }
-        */
+        
 
         @keyframes animacaoBolada {
             0% {
@@ -82,9 +84,6 @@
             
             50% {
                 background-color: green;
-                /*
-                transform: rotate3d(1, 1, 1, 180deg);
-                */
             }
             
             100% {
@@ -92,6 +91,7 @@
                 transform: rotate3d(24, 6, -12, 360deg);
             }
         }
+        */
 
         section div {
             cursor: pointer;
@@ -101,12 +101,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-
+            /*
             transition-timing-function: ease;
-            /* transform: rotate3d(0, 0, 0, 180deg); */
+            transform: rotate3d(0, 0, 0, 180deg);
             transform: scale(1);
             transition: 1.25s;
             z-index: 1;
+            */
         }
 
         section div:hover {
@@ -117,11 +118,13 @@
             align-items: center;
             justify-content: center;
 
+            /*
             transition-timing-function: ease;
-            /* transform: rotate3d(0, 1, 0, 180deg); */
+            transform: rotate3d(0, 1, 0, 180deg); 
             transform: scale(2);
             z-index: 999;
             transition: 1.25s;
+            */
         }
 
         /*
@@ -146,18 +149,40 @@
         }
 
         function checkVelha(index) {
-            linha = Math.floor(index / 3);
-            coluna = index % 3;
-            inicioLinha = linha * 3;
+            var linhaIndex = Math.floor(index / 3);
+            var colunaIndex = index % 3;
+            // grid[(linha*3)+coluna+1];
             var ganhou = false;
-            if (index in [0,2,4,6,8]) {
+            if ([0,2,4,6,8].includes(index)) {
                 //TODO: verificar diagonais
+                for(coluna=0, linha=0; coluna<3, grid[index] == grid[(linha*3)+coluna]; coluna++, linha++);
+                if (coluna > 2) {
+                    ganhou = true;
+                }
+                else {
+                    for(coluna=0, linha=2; coluna<3, grid[index] == grid[(linha*3)+coluna]; coluna++, linha--);
+                    if (coluna > 2) {
+                        ganhou = true;
+                    }
+                }
             }
             if (!ganhou) {
                 //TODO: verificar linha
+                for(coluna=0; coluna<3, grid[index] == grid[(linhaIndex*3)+coluna]; coluna++);
+                if (coluna > 2) {
+                    ganhou = true;
+                }
             }
             if(!ganhou) {
                 //TODO: verificar coluna
+                for(linha=0; linha<3, grid[index] == grid[(linha*3)+colunaIndex]; linha++);
+                if (linha > 2) {
+                    ganhou = true;
+                }
+            }
+            console.log(ganhou);
+            if(ganhou) {
+                alert("Parabéns! O "+validPlays[grid[index]]+" ganhou :)");
             }
             return ganhou;
         }
@@ -168,7 +193,7 @@
                 this.innerHTML = validPlays[currentPlay];
                 this.style.backgroundColor = colors[currentPlay];
                 grid[this.velha] = currentPlay;
-                alert(checkVelha(this.velha));
+                checkVelha(this.velha);
             }
         }
     </script>
