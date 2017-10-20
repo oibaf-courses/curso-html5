@@ -181,9 +181,6 @@
                 }
             }
             console.log(ganhou);
-            if(ganhou) {
-                alert("Parabéns! O "+validPlays[grid[index]]+" ganhou :)");
-            }
             return ganhou;
         }
 
@@ -193,7 +190,10 @@
                 this.innerHTML = validPlays[currentPlay];
                 this.style.backgroundColor = colors[currentPlay];
                 grid[this.velha] = currentPlay;
-                checkVelha(this.velha);
+                var ganhou = checkVelha(this.velha);
+                if(ganhou) {
+                    alert("Parabéns! O "+validPlays[grid[index]]+" ganhou :)");
+                }
             }
         }
     </script>
