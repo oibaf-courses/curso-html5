@@ -1,0 +1,21 @@
+*, html, body {
+    padding: 0px;
+    margin: 0px;
+    background-color: beige;
+}
+
+#resultado {
+    background-color: red;
+}
+
+#resultado .salarioAnual {
+    color: black;
+}
+
+#resultado .descontoINSS {
+    color: red;
+}
+
+#resultado .liquidoAnual {
+    color: blue;
+}

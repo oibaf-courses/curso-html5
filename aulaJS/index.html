@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="resources/estilo.css" rel="stylesheet">
+    <script src="resources/script.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <article>
+            <h1>Média Calculator</h1>
+            <form onsubmit="return false;">
+                <label for="num1">Número1: </label><input type="number" id="num1" placeholder="informe um número" required>
+                <label for="num2">Número2: </label><input type="number" id="num2" placeholder="informe outro número" required>
+                <button onclick="document.getElementById('resultado').innerHTML = media(document.getElementById('num1').value, document.getElementById('num2').value)">Calcular</button>
+            </form>
+            <section id="resultado"></section>
+        </article>
+    </main>
+</body>
+</html>
